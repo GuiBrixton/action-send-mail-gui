@@ -1,0 +1,38 @@
+name: Envio de email de prueba
+
+on:
+    #     - main
+    workflow_dispatch:
+env:
+    SERVE_PORT: 465
+    TO : 'a.cavaleiro.costa@accenture.com'
+
+jobs:
+  Send-email:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          repository: GuiBrixton/action-send-mail
+          ref: master
+
+      - name: Use Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        run: npm install
+           
+      - name: Send mail
+        uses: GuiBrixton/action-send-mail@v1
+        with:
+          connection_url: smtp+starttls://${{secrets.USERNAME}}:${{secrets.PASSWORD}}@${{secrets.SERVER_ADDRESS}}:{{env.SERVE_PORT}}/
+          secure: true
+          subject: Plain body with connection_url
+          body: |
+            first line
+            second line Correo enviado Gui
+          to: ${{env.TO}}
+          from: github-actions
