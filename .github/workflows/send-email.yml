@@ -11,12 +11,7 @@ jobs:
   Send-email:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-        with:
-          repository: GuiBrixton/action-send-mail
-          ref: master
-
+ 
       - name: Use Node.js
         uses: actions/setup-node@v4
         with:
