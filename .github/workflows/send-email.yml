@@ -21,7 +21,7 @@ jobs:
         run: npm install
            
       - name: Send mail
-        uses: GuiBrixton/action-send-mail@v4
+        uses: GuiBrixton/action-send-mail@v3
         with:
           connection_url: smtp+starttls://${{secrets.USERNAME}}:${{secrets.PASSWORD}}@${{secrets.SERVER_ADDRESS}}:{{env.SERVE_PORT}}/
           secure: true
