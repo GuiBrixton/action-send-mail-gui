@@ -2,9 +2,6 @@ name: Envio de email de prueba
 on:
     #     - main
     workflow_dispatch:
-env:
-    SERVE_PORT: 465
-    TO : ''
 
 jobs:
   Send-email:
@@ -17,7 +14,10 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '20'
-           
+      
+      - name: Instalar dependencias desde package.json
+        run: npm install --production
+
       - name: Send mail
         uses: ./
         with:
