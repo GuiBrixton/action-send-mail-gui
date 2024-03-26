@@ -1,11 +1,10 @@
 name: Envio de email de prueba
-
 on:
     #     - main
     workflow_dispatch:
 env:
     SERVE_PORT: 465
-    TO : 'a.cavaleiro.costa@accenture.com'
+    TO : ''
 
 jobs:
   Send-email:
@@ -21,13 +20,16 @@ jobs:
         run: npm install
            
       - name: Send mail
-        uses: GuiBrixton/action-send-mail@v3
+        uses: ./
         with:
-          connection_url: smtp+starttls://${{secrets.USERNAME}}:${{secrets.PASSWORD}}@${{secrets.SERVER_ADDRESS}}:{{env.SERVE_PORT}}/
-          secure: true
+          server_address: ${{secrets.SERVER_ADDRESS}}
+          port: "465"
+          username: ${{secrets.MAIL_USERNAME}}
+          password: ${{secrets.MAIL_PASSWORD}}
+          from: "github-Prueba"
+          to: "a.cavaleiro.costa@accenture.com"
           subject: Plain body with connection_url
           body: |
             first line
             second line Correo enviado Gui
-          to: ${{env.TO}}
-          from: github-actions
+          
