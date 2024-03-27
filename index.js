@@ -76,7 +76,7 @@ const connectsmtp = core.getInput("connect_smtp")
       if (!serverAddress) {throw new Error("Server address must be specified");}
 
       const auth = username && password ? { user: username, pass: password } : undefined;
-      const tls = ignoreCert == "true" ? { rejectUnauthorized: false } : undefined;
+      const tls = ignoreCert === "true" ? { rejectUnauthorized: false } : undefined;
             
       const optionsTraffic = {
           host: serverAddress,
