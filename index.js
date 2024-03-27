@@ -94,7 +94,7 @@ const connectsmtp = core.getInput("connect_smtp")
      
       };
 
-    const typeTraffic = nodemailer.createTraffic(optionsTraffic); 
+    const typeTraffic = nodemailer.createTransport(optionsTraffic); 
     
     typeTraffic.sendMail(optionsInfo, (error, info) => {
       if (error) {
