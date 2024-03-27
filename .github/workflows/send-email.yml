@@ -21,7 +21,7 @@ jobs:
       - name: Send mail
         uses: ./
         with:
-          connection_url: smtp+starttls://${{secrets.MAIL_USERNAME}}:${{secrets.MAIL_PASSWORD}}@${{secrets.SERVER_ADDRESS}}/
+          connect_smtp: smtp+starttls://${{secrets.MAIL_USERNAME}}:${{secrets.MAIL_PASSWORD}}@${{secrets.SERVER_ADDRESS}}/
           # server_address: ${{secrets.SERVER_ADDRESS}}
           # port: "465"
           # username: ${{secrets.MAIL_USERNAME}}
