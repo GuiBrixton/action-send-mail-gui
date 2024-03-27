@@ -21,12 +21,12 @@ jobs:
       - name: Send mail
         uses: ./
         with:
-          connection_url: smtp+starttls://${{secrets.USERNAME}}:${{secrets.PASSWORD}}@${{secrets.ADDRESS}}/
+          connection_url: smtp+starttls://${{secrets.MAIL_USERNAME}}:${{secrets.MAIL_PASSWORD}}@${{secrets.SERVER_ADDRESS}}/
           # server_address: ${{secrets.SERVER_ADDRESS}}
           # port: "465"
           # username: ${{secrets.MAIL_USERNAME}}
           # password: ${{secrets.MAIL_PASSWORD}}
-          from: "github-Prueba"
+          from: "github-Prueba-Gui"
           to: "a.cavaleiro.costa@accenture.com"
           subject: Multipart body (Markdown)
           body: file://src/body.txt
