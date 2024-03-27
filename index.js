@@ -74,19 +74,15 @@ const connectsmtp = core.getInput("connect_smtp")
       
       if (!serverAddress) {throw new Error("Server address must be specified");}
 
-                  
+      const auth = username && password ? { user: username, pass: password } : undefined;
+      const tls = ignoreCert == "true" ? { rejectUnauthorized: false } : undefined;
+            
       const optionsTraffic = {
-        host: serverAddress,
-        auth: username && password ? {
-            user: username,
-            pass: password
-        } : undefined,
-        port: serverPort,
-        secure: secure === "true",
-        tls: ignoreCert == "true" ? {
-            rejectUnauthorized: false
-        }: undefined   
-      };
+          host: serverAddress,
+          auth,
+          port: parseInt(serverPort),
+          secure: secure === "true",
+          tls };
 
       const optionsInfo ={
       from: getFrom(from, username),
@@ -99,7 +95,7 @@ const connectsmtp = core.getInput("connect_smtp")
       };
 
     const typeTraffic = nodemailer.createTraffic(optionsTraffic); 
-
+    
     typeTraffic.sendMail(optionsInfo, (error, info) => {
       if (error) {
         throw new Error('Error sending email:' + error);

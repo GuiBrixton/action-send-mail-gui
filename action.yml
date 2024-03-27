@@ -33,7 +33,10 @@ inputs:
         required: true
     body:
         description: 'Email body text'
-        required: true      
+        required: true
+    ignore_cert:
+        description: Allow unsigned/invalid certificates
+        required: false     
 runs:
     using: 'node12'
     main: 'index.js'

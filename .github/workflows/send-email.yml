@@ -22,10 +22,7 @@ jobs:
         uses: ./
         with:
           connect_smtp: smtp+starttls://${{secrets.MAIL_USERNAME}}:${{secrets.MAIL_PASSWORD}}@${{secrets.SERVER_ADDRESS}}/
-          # server_address: ${{secrets.SERVER_ADDRESS}}
-          # port: "465"
-          # username: ${{secrets.MAIL_USERNAME}}
-          # password: ${{secrets.MAIL_PASSWORD}}
+         
           from: "github-Prueba-Gui"
           to: "a.cavaleiro.costa@accenture.com"
           subject: Multipart body (Markdown)
