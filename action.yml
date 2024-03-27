@@ -5,12 +5,17 @@ branding:
     icon: mail
     color: orange
 inputs:
+    connect_smtp:
+        description: ''
+        required: true
     server_address:
         description: 'URL of SMTP server'
         required: true
     port:
         description: 'Server port'
-        required: true
+        default: "25"
+    secure:
+        description: 'Server port'
     username:
         description: 'Auth username: Use secret'
         required: true
@@ -28,7 +33,7 @@ inputs:
         required: true
     body:
         description: 'Email body text'
-        required: true
+        required: true      
 runs:
     using: 'node12'
     main: 'index.js'
