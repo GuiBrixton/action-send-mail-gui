@@ -90,7 +90,6 @@ const connectsmtp = core.getInput("connect_smtp")
       to: to,
       subject: getText(subject, false),
       cc: cc ? cc : undefined,
-      references: inReplyTo ? inReplyTo : undefined,
       text: body ? getText(body, convertMarkdown) : undefined,
      
       };
