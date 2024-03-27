@@ -36,7 +36,10 @@ inputs:
         required: true
     ignore_cert:
         description: Allow unsigned/invalid certificates
-        required: false     
+        required: false 
+    convert_markdown:
+        description: Convert body from Markdown to HTML (set content_type input as text/html too)
+        required: false    
 runs:
     using: 'node12'
     main: 'index.js'
