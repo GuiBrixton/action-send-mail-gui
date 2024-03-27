@@ -68,6 +68,7 @@ const connectsmtp = core.getInput("connect_smtp")
         const to = core.getInput("to", { required: false })
         const body = core.getInput("body", { required: false })
         const cc = core.getInput("cc", { required: false })
+        const ignoreCert = core.getInput("ignore_cert", { required: false })
         const convertMarkdown = core.getInput("convert_markdown", { required: false })
 
       if (!(to || cc )) {throw new Error("At least one of 'to', 'cc',  must be specified");}
@@ -90,8 +91,8 @@ const connectsmtp = core.getInput("connect_smtp")
       subject: getText(subject, false),
       cc: cc ? cc : undefined,
       references: inReplyTo ? inReplyTo : undefined,
-      text: body ? getText(body, false) : undefined,
-      html: htmlBody ? getText(htmlBody, convertMarkdown) : undefined
+      text: body ? getText(body, convertMarkdown) : undefined,
+     
       };
 
     const typeTraffic = nodemailer.createTraffic(optionsTraffic); 
