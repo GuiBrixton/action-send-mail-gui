@@ -86,6 +86,7 @@ const connectsmtp = core.getInput("connect_smtp")
           tls };
 
       const optionsInfo ={
+      
       from: getFrom(from, username),
       to: to,
       subject: getText(subject, false),
